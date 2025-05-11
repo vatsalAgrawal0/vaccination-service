@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaccination-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaccination-service
+  template:
+    metadata:
+      labels:
+        app: vaccination-service
+    spec:
+      containers:
+        - name: vaccination-service
+          image: vaccination-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8085
